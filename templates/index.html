@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDF Project Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+
+</head>
+<body>
+    <div class="container">
+        <h1>SDF Project Helper 2.0</h1>
+
+        <form action="/generate" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="idea">Enter Your Project Idea:</label>
+                <input type="text" name="idea" id="idea" required value="{{ request.form.idea or '' }}">
+            </div>
+        
+            <div class="form-group">
+                <label for="description">Short Description:</label>
+                <textarea name="description" id="description" required>{{ request.form.description or '' }}</textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="members">Team Members (Name - Enrollment Number):</label>
+                <textarea name="members" id="members" required>{{ request.form.members or '' }}</textarea>
+            </div>
+        
+            <div class="button-group">
+                <button type="submit" name="task" value="generate_synopsis">Generate Synopsis</button>
+                <button type="submit" name="task" value="generate_roadmap">Generate Roadmap</button>
+                <button type="submit" name="task" value="generate_tips">Project Tips</button>
+                <button type="submit" name="task" value="generate_code">Get Code</button>
+                <button type="submit" name="task" value="generate_doc">Generate Documentation</button>
+            </div>
+        </form>
+        
+        {% if chat_history %}
+        <div class="output-box">
+            <h3>📚 Previous Questions:</h3>
+            {% for chat in chat_history %}
+                <p><strong>Q:</strong> {{ chat.q }}</p>
+                
+                <hr>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if result %}
+        <div class="output-box">
+            {{ result|safe }}
+        </div>
+        {% endif %}
+        
+        {% if download_link %}
+        <div >
+            <a href="{{ download_link }}" download>📥 Download PDF</a>
+        </div>
+        {% endif %}
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tipsButton = document.querySelector('button[value="generate_tips"]');
+            const form = document.querySelector('form');
+    
+            tipsButton.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent form submission
+    
+                // Grab required inputs
+                const idea = document.getElementById('idea');
+                const description = document.getElementById('description');
+                const members = document.getElementById('members');
+    
+                // Check if any of the fields are empty
+                if (!idea.value.trim() || !description.value.trim() || !members.value.trim()) {
+                    alert("Please fill in all the required fields: Project Idea, Description, and Team Members.");
+                    return;
+                }
+    
+                // If already added, don’t append again
+                if (document.getElementById("question")) return;
+    
+                // Show question input dynamically
+                const questionDiv = document.createElement('div');
+                questionDiv.innerHTML = `
+                    <div class="form-group">
+                        <label for="question">Ask a project-related question:</label>
+                        <input type="text" id="question" name="question" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" name="task" value="submit_tips">Submit Question</button>
+                    </div>
+                `;
+    
+                form.appendChild(questionDiv);
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>
