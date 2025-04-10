@@ -88,6 +88,13 @@ input#question {
     border: 1px solid #ccc;
 }
 
+.soon {
+    background: #0e11152b
+}
+.soon:hover {
+    background: #090e132b
+}
+
 /* Output Display */
 .output-box {
     margin-top: 30px;

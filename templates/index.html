@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDF Project Helper</title>
+    <title>THE Project Builder</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
  
 
 </head>
 <body>
     <div class="container">
-        <h1>SDF Project Helper 2.0</h1>
+        <h1>THE Project Builder</h1>
 
         <form action="/generate" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -33,7 +33,7 @@
                 <button type="submit" name="task" value="generate_roadmap">Generate Roadmap</button>
                 <button type="submit" name="task" value="generate_tips">Project Tips</button>
                 <button type="submit" name="task" value="generate_code">Get Code</button>
-                <button type="submit" name="task" value="generate_doc">Generate Documentation</button>
+                <button class="soon" type="submit" name="task" value="generate_doc">Generate Documentation</button>
             </div>
         </form>
         
