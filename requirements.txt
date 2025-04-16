@@ -1,8 +1,8 @@
-crewai==0.114.0
-crewai_tools==0.40.1
-fitz==0.0.1.dev2
-Flask==3.1.0
-langchain==0.3.23
-protobuf==6.30.2
-python-dotenv==1.1.0
-xhtml2pdf==0.2.17
+crewai
+crewai_tools
+fitz
+Flask=
+langchain
+protobuf
+python-dotenv
+xhtml2pdf
