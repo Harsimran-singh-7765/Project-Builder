@@ -1,7 +1,7 @@
 crewai
 crewai_tools
 fitz
-Flask=
+Flask
 langchain
 protobuf
 python-dotenv
