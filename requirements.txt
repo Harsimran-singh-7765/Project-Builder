@@ -3,6 +3,6 @@ crewai_tools==0.40.1
 fitz==0.0.1.dev2
 Flask==3.1.0
 langchain==0.3.23
-protobuf==6.30.2
+protobuf==5.26.1
 python-dotenv==1.1.0
 xhtml2pdf==0.2.17
