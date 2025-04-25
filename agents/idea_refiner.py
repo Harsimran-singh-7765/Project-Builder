@@ -15,10 +15,13 @@ from dotenv import load_dotenv
 # Load the .env file from the ROOT directory
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
-os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
-os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
+
+
+print("GEMINI_API_KEY from env:", os.getenv("GEMINI_API_KEY"))
+print("SERPER_API_KEY from env:", os.getenv("SERPER_API_KEY")) 
+
 configure(api_key=os.environ["GEMINI_API_KEY"])
-llm = LLM(model="gemini/gemini-1.5-flash")
+llm = LLM(model="gemini/gemini-1.5-flash")  
 
 from crewai_tools import SerperDevTool
 from crewai_tools import ScrapeWebsiteTool 
